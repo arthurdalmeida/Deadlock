@@ -1,0 +1,21 @@
+Script started on 2026-11-11 20:50:17-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="87" LINES="11"]
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ date
+[?2004lWed Nov 11 20:50:21 -03 2026
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ whoami
+[?2004larthuralmeida
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ pwd
+[?2004l/mnt/c/Users/almei/Deadlock/Deadlock
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ [7mgcc -Wall -o banker seu_arqu[27m[7mi[27m[7mvo.c[27m[A]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ gcc -Wall -o banker seu_arquivo.c[1P.c[1P.c[1P.c[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C.c[K[A]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C.c [K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P.c
+[K[A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[1P.c[1P.c[1P.c[1P.c[1P.cb.ca.cn.ck.ce.cr.c [A]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ [C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C
+[?2004l[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ [7m./banker 10 5 7[27m./banker 10 5 7
+[?2004l 10 5 7
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ [7m./banker[27m./banker
+[?2004ldeve ser: ./banker r1 r2 r3
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ [7m./banker 10 abc 7[27m./banker 10 abc 7
+[?2004lArgumento invalido: abc
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ [7m./banker 10 -5 7[27m./banker 10 -5 7
+[?2004lValor negativo: -5
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ exit
+[?2004lexit
+
+Script done on 2026-11-11 20:51:20-03:00 [COMMAND_EXIT_CODE="1"]
