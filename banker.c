@@ -3,6 +3,36 @@
 
 int qtdRecursos;
 int *avaiable;
+int qtdClientes;
+
+void leituraDeClientes(){
+    FILE *arquivo = fopen("customer.txt", "r");
+
+    if (arquivo == NULL){
+        fprintf(stderr, "Não foi possível abrir o arquivo\n");
+        free(avaiable);
+        exit(1);
+    }
+
+    char linha[256];
+    int cont = 0;
+
+    while (fgets(linha, 256, arquivo) != NULL){
+        if (linha[0] != '\n' && linha[0] != '\0' && linha[0] != '\r'){
+            cont++;
+        }
+    }
+
+    if (cont == 0){
+        fprintf(stderr, "Arquivo vazio\n");
+        fclose(arquivo);
+        free(avaiable);
+        exit(1);
+    }
+
+    qtdClientes = cont;
+    fclose(arquivo);
+}
 
 int main(int argc, char *argv[]){
     qtdRecursos = argc-1;
@@ -37,6 +67,9 @@ int main(int argc, char *argv[]){
 
         avaiable[i] = (int)valor;
     }
+
+    leituraDeClientes();
+    printf("clientes: %d\n", qtdClientes);
 
     for (int i=0; i<qtdRecursos; i++){
         printf(" %d", avaiable[i]);

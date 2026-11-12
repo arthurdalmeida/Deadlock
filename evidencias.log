@@ -19,3 +19,17 @@ Script started on 2026-11-11 20:50:17-03:00 [TERM="xterm-256color" TTY="/dev/pts
 [?2004lexit
 
 Script done on 2026-11-11 20:51:20-03:00 [COMMAND_EXIT_CODE="1"]
+Script started on 2026-11-12 15:47:21-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="87" LINES="11"]
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ [7m./banker 10 5 7[27m./banker 10 5 7
+[?2004lclientes: 5
+ 10 5 7
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ [7m./banker[27m./banker
+[?2004ldeve ser: ./banker r1 r2 r3
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ [7m./banker 10 abc 7[27m./banker 10 abc 7
+[?2004lArgumento invalido: abc
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ [7m./banker 10 -5 7[27m./banker 10 -5 7
+[?2004lValor negativo: -5
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ exit
+[?2004lexit
+
+Script done on 2026-11-12 15:47:51-03:00 [COMMAND_EXIT_CODE="1"]
