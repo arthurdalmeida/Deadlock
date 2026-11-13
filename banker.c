@@ -1,9 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <string.h>
 
 int qtdRecursos;
 int *avaiable;
 int qtdClientes;
+int **maximum;
 
 void leituraDeClientes(){
     FILE *arquivo = fopen("customer.txt", "r");
@@ -31,8 +33,70 @@ void leituraDeClientes(){
     }
 
     qtdClientes = cont;
+
+    maximum = malloc(qtdClientes*sizeof(int*));
+    
+    for (int i = 0; i<qtdClientes; i++){
+        maximum[i] = malloc(qtdRecursos*sizeof(int));
+    }
+
+    rewind(arquivo);
+
+    int i = 0;
+    while (fgets(linha, sizeof(linha), arquivo) != NULL){
+        linha[strcspn(linha, "\r\n")] = '\0';
+        
+        if (linha[0] == '\0'){
+            continue;
+        }
+
+        int j = 0;
+        char *token = strtok(linha, ",");
+
+        while (token != NULL){
+            if (j >= qtdRecursos){
+                fprintf(stderr, "cloente tem mais recursos que o esperado\n");
+                fclose(arquivo);
+                free(avaiable);
+                exit(1);
+            }
+
+            char *fim;
+            long valor = strtol(token, &fim, 10);
+
+            if (fim == token || *fim != '\0'){
+                fprintf(stderr, "cliente tem um valor inválido\n");
+                fclose(arquivo);
+                free(avaiable);
+                exit(1);
+            }
+
+            if (valor < 0){
+                fprintf(stderr, "cliente tem um valor neagtivo\n");
+                fclose(arquivo);
+                free(avaiable);
+                exit(1);
+            }
+
+            maximum[i][j] = (int)valor;
+            j++;
+            token = strtok(NULL, ",");
+        } 
+
+        if (j != qtdRecursos){
+            fprintf(stderr, "cliente tem menos recursos que o esperado\n");
+            fclose(arquivo);
+            free(avaiable);
+            exit(1);
+        }
+        i++;
+    }
+
     fclose(arquivo);
 }
+
+
+
 
 int main(int argc, char *argv[]){
     qtdRecursos = argc-1;
@@ -71,11 +135,17 @@ int main(int argc, char *argv[]){
     leituraDeClientes();
     printf("clientes: %d\n", qtdClientes);
 
+    for (int m=0; m< qtdClientes; m++){
+        for (int n=0; n<qtdRecursos; n++){
+            printf("%d ", maximum[m][n]);
+        }
+        printf("\n");
+    }
+
     for (int i=0; i<qtdRecursos; i++){
         printf(" %d", avaiable[i]);
     }
     printf("\n");
     free(avaiable);
     return 0;
-
 }
