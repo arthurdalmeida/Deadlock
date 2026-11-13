@@ -3,7 +3,7 @@
 #include <string.h>
 
 int qtdRecursos;
-int *avaiable;
+int *available;
 int qtdClientes;
 int **maximum;
 int **allocation;
@@ -14,7 +14,7 @@ void leituraDeClientes(){
 
     if (arquivo == NULL){
         fprintf(stderr, "Não foi possível abrir o arquivo\n");
-        free(avaiable);
+        free(available);
         exit(1);
     }
 
@@ -30,7 +30,7 @@ void leituraDeClientes(){
     if (cont == 0){
         fprintf(stderr, "Arquivo vazio\n");
         fclose(arquivo);
-        free(avaiable);
+        free(available);
         exit(1);
     }
 
@@ -59,7 +59,7 @@ void leituraDeClientes(){
             if (j >= qtdRecursos){
                 fprintf(stderr, "cloente tem mais recursos que o esperado\n");
                 fclose(arquivo);
-                free(avaiable);
+                free(available);
                 exit(1);
             }
 
@@ -69,14 +69,14 @@ void leituraDeClientes(){
             if (fim == token || *fim != '\0'){
                 fprintf(stderr, "cliente tem um valor inválido\n");
                 fclose(arquivo);
-                free(avaiable);
+                free(available);
                 exit(1);
             }
 
             if (valor < 0){
                 fprintf(stderr, "cliente tem um valor neagtivo\n");
                 fclose(arquivo);
-                free(avaiable);
+                free(available);
                 exit(1);
             }
 
@@ -88,7 +88,7 @@ void leituraDeClientes(){
         if (j != qtdRecursos){
             fprintf(stderr, "cliente tem menos recursos que o esperado\n");
             fclose(arquivo);
-            free(avaiable);
+            free(available);
             exit(1);
         }
         i++;
@@ -111,7 +111,46 @@ void inicializarEstado(){
     }
 }
 
+void imprimirEstado(FILE *saida){
+    fprintf(saida, "MAXIMUM | ALLOCATION | NEED\n");
 
+    for (int i=0; i<qtdClientes; i++){
+        for (int j=0; j<qtdRecursos; j++){
+            if (j>0){
+                fprintf(saida, " ");    
+            }
+            fprintf(saida, "%d", maximum[i][j]);
+        }
+
+        fprintf(saida, " | ");
+
+        for (int j=0; j<qtdRecursos; j++){
+            if (j>0){
+                fprintf(saida, " ");
+            }
+            fprintf(saida, "%d", allocation[i][j]);
+        }
+
+        fprintf(saida, " | ");
+
+        for (int j=0; j<qtdRecursos; j++){
+            if (j>0){
+                fprintf(saida, " ");
+            }
+            fprintf(saida, "%d", need[i][j]);
+        }
+
+        fprintf(saida, "\n");
+    }
+
+    fprintf(saida, "AVAILABLE");
+
+    for (int i=0; i<qtdRecursos; i++){
+        fprintf(saida, " %d", available[i]);
+    }
+
+    fprintf(saida, "\n");
+}
 
 
 int main(int argc, char *argv[]){
@@ -122,9 +161,9 @@ int main(int argc, char *argv[]){
         return 1;
     }
 
-    avaiable = malloc(qtdRecursos*sizeof(int));
+    available = malloc(qtdRecursos*sizeof(int));
 
-    if (avaiable == NULL){
+    if (available == NULL){
         fprintf(stderr, "Erro de memória\n");
         return 1;
     }
@@ -135,43 +174,26 @@ int main(int argc, char *argv[]){
 
         if (argv[i+1][0] == '\0' || *fim != '\0'){
             fprintf(stderr, "Argumento invalido: %s\n", argv[i+1]);
-            free(avaiable);
+            free(available);
             return 1;
         }
 
         if (valor < 0){
             fprintf(stderr, "Valor negativo: %s\n", argv[i+1]);
-            free(avaiable);
+            free(available);
             return 1;
         }
 
-        avaiable[i] = (int)valor;
+        available[i] = (int)valor;
     }
 
     leituraDeClientes();
     printf("clientes: %d\n", qtdClientes);
 
     inicializarEstado();
-    printf("NEED:\n");
-    for (int i=0; i<qtdClientes; i++){
-        for (int j=0; j<qtdRecursos; j++){
-            printf("%d ", need[i][j]);
-        }
-        printf("\n");
-    }
+    imprimirEstado(stdout);
 
-    printf("ALLOCATION:\n");
-    for (int i=0; i<qtdClientes; i++){
-        for (int j=0; j<qtdRecursos; j++){
-            printf("%d ", allocation[i][j]);
-        }
-        printf("\n");
-    }
-
-    for (int i=0; i<qtdRecursos; i++){
-        printf(" %d", avaiable[i]);
-    }
     printf("\n");
-    free(avaiable);
+    free(available);
     return 0;
 }
