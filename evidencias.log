@@ -76,3 +76,24 @@ Script started on 2026-11-12 17:44:58-03:00 [TERM="xterm-256color" TTY="/dev/pts
 [?2004lexit
 
 Script done on 2026-11-12 17:45:41-03:00 [COMMAND_EXIT_CODE="1"]
+Script started on 2026-11-13 11:20:38-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="87" LINES="22"]
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ [7mgcc -Wall -o banker banker.c[27m [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgcc -Wall -o banker banker.c [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kc
+[?2004l[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ [7m./banker 10 5 7[27m./banker 10 5 7
+[?2004lclientes: 5
+NEED:
+7 5 3 
+3 2 2 
+9 0 2 
+2 2 2 
+4 3 3 
+ALLOCATION:
+0 0 0 
+0 0 0 
+0 0 0 
+0 0 0 
+0 0 0 
+ 10 5 7
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ exit
+[?2004lexit
+
+Script done on 2026-11-13 11:21:00-03:00 [COMMAND_EXIT_CODE="0"]

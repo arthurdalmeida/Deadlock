@@ -6,6 +6,8 @@ int qtdRecursos;
 int *avaiable;
 int qtdClientes;
 int **maximum;
+int **allocation;
+int **need;
 
 void leituraDeClientes(){
     FILE *arquivo = fopen("customer.txt", "r");
@@ -35,7 +37,7 @@ void leituraDeClientes(){
     qtdClientes = cont;
 
     maximum = malloc(qtdClientes*sizeof(int*));
-    
+
     for (int i = 0; i<qtdClientes; i++){
         maximum[i] = malloc(qtdRecursos*sizeof(int));
     }
@@ -95,6 +97,20 @@ void leituraDeClientes(){
     fclose(arquivo);
 }
 
+void inicializarEstado(){
+    allocation = malloc(qtdClientes*sizeof(int*));
+    need = malloc(qtdClientes*sizeof(int*));
+
+    for (int i=0; i<qtdClientes; i++){
+        allocation[i] = calloc(qtdRecursos, sizeof(int));
+        need[i] = malloc(qtdRecursos*sizeof(int));
+
+        for (int j=0; j<qtdRecursos; j++){
+            need[i][j] = maximum[i][j] - allocation[i][j];
+        }
+    }
+}
+
 
 
 
@@ -135,9 +151,19 @@ int main(int argc, char *argv[]){
     leituraDeClientes();
     printf("clientes: %d\n", qtdClientes);
 
-    for (int m=0; m< qtdClientes; m++){
-        for (int n=0; n<qtdRecursos; n++){
-            printf("%d ", maximum[m][n]);
+    inicializarEstado();
+    printf("NEED:\n");
+    for (int i=0; i<qtdClientes; i++){
+        for (int j=0; j<qtdRecursos; j++){
+            printf("%d ", need[i][j]);
+        }
+        printf("\n");
+    }
+
+    printf("ALLOCATION:\n");
+    for (int i=0; i<qtdClientes; i++){
+        for (int j=0; j<qtdRecursos; j++){
+            printf("%d ", allocation[i][j]);
         }
         printf("\n");
     }
