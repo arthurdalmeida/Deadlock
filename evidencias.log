@@ -141,3 +141,45 @@ AVAILABLE 10 5 7
 [?2004lexit
 
 Script done on 2026-11-13 15:53:47-03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-11-16 10:04:14-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="87" LINES="23"]
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ pwd
+[?2004l/mnt/c/Users/almei/Deadlock/Deadlock
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ whoami
+[?2004larthuralmeida
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ date
+[?2004lMon Nov 16 10:04:23 -03 2026
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ [7mgcc -Wall -o banker banker.c[27m [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgcc -Wall -o banker banker.c [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kc
+[?2004l[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ [7m./banker 10 5 7[27m./banker 10 5 7
+[?2004lclientes: 5
+teste 1 -> tipo 3
+teste 2 -> tipo 3
+cliente inválido na linha 2[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ [K]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ [K]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ exit
+[?2004lexit
+
+Script done on 2026-11-16 10:04:54-03:00 [COMMAND_EXIT_CODE="1"]
+Script started on 2026-11-16 14:00:39-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="87" LINES="18"]
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ pwd
+[?2004l/mnt/c/Users/almei/Deadlock/Deadlock
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ whoami
+[?2004larthuralmeida
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ date
+[?2004lMon Nov 16 14:00:49 -03 2026
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ [7mgcc -Wall -o banker banker.c[27m [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Cgcc -Wall -o banker banker.c [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kc
+[?2004l[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ [7m./banker 10 5 7[27m./banker 10 5 7
+[?2004lclientes: 5
+teste 1 -> tipo 1, cliente 0, pedido: 0 2 1
+teste 2 -> tipo 2, cliente 4, pedido: 1 0 2
+teste 3 -> tipo 3
+teste 4 -> tipo 0
+MAXIMUM | ALLOCATION | NEED
+7 5 3 | 0 0 0 | 7 5 3
+3 2 2 | 0 0 0 | 3 2 2
+9 0 2 | 0 0 0 | 9 0 2
+2 2 2 | 0 0 0 | 2 2 2
+4 3 3 | 0 0 0 | 4 3 3
+AVAILABLE 10 5 7
+
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ exit
+[?2004lexit
+
+Script done on 2026-11-16 14:01:07-03:00 [COMMAND_EXIT_CODE="0"]

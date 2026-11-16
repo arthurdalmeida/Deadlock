@@ -152,6 +152,90 @@ void imprimirEstado(FILE *saida){
     fprintf(saida, "\n");
 }
 
+int validarLinha(char *linha, int numeroDaLinha, int *cliente, int *pedido){
+    linha[strcspn(linha, "\r\n")] = '\0';
+
+    if (linha[0] == '\0'){
+        return 0;
+    }
+
+    char *token = strtok(linha, " ");
+    char *fim;
+    long valor;
+    int tipoToken;
+
+    if (token == NULL){
+        return 0;
+    }
+
+    if (strcmp(token, "*") == 0){
+        if (strtok(NULL, " ") != NULL){
+            fprintf(stderr, "commands.txt, linha %d: * nao aceita parametros\n", numeroDaLinha);
+            exit(1);
+        }
+        return 3;
+    }
+
+    if (strcmp(token, "RQ") == 0){
+        tipoToken = 1;
+    }
+    else if (strcmp(token, "RL") == 0){
+        tipoToken = 2;
+    }
+    else{
+        fprintf(stderr, "Comando desconhecido na linha %d: %s\n", numeroDaLinha, token);
+        exit(1);
+    }
+
+    token = strtok(NULL, " ");
+    if (token == NULL){
+        fprintf(stderr, "Falta o numero de clientes da linha %d\n", numeroDaLinha);
+        exit(1);
+    }
+
+    valor = strtol(token, &fim, 10);
+    if (valor >= qtdClientes || valor < 0){
+        fprintf(stderr, "Cliente %ld da linha %d nao existe\n", valor, numeroDaLinha);
+        exit(1);
+    }
+
+    valor = strtol(token, &fim, 10);
+    if (*fim != '\0' || fim == token){
+        fprintf(stderr, "O cliente %ld da linha %d é inválido\n", valor, numeroDaLinha);
+        exit(1);
+    }
+
+    *cliente = (int)valor;
+
+    for (int i=0; i<qtdRecursos; i++){
+        token = strtok(NULL, " ");
+        if (token == NULL){
+            fprintf(stderr, "A linha %d tem menos recursos que o esperado\n", numeroDaLinha);
+            exit(1);
+        }
+
+        valor = strtol(token, &fim, 10);
+
+        if (valor < 0){
+            fprintf(stderr, "Valor negativo na linha %d\n", numeroDaLinha);
+            exit(1);
+        }
+
+        if (*fim != '\0' || fim == token){
+            fprintf(stderr, "Valor invalido na linha %d\n", numeroDaLinha);
+            exit(1);
+        }
+
+        pedido[i] = (int)valor;
+    }
+
+    if (strtok(NULL, " ") != NULL){
+        fprintf(stderr, "Mais recursos que o esperado na linha %d\n", numeroDaLinha);
+        exit(1);
+    }
+    return tipoToken;
+}
+
 
 int main(int argc, char *argv[]){
     qtdRecursos = argc-1;
@@ -188,8 +272,6 @@ int main(int argc, char *argv[]){
     }
 
     leituraDeClientes();
-    printf("clientes: %d\n", qtdClientes);
-
     inicializarEstado();
     imprimirEstado(stdout);
 
