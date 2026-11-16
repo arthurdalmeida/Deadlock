@@ -304,7 +304,7 @@ int verificarSeguranca(){
 
     free(recursosLivres);
     free(concluido);
-    
+
     if (qtdTerminados == qtdClientes){
         return 1;
     }
@@ -398,6 +398,14 @@ void processarComandos(){
     }
 
     rewind(arq);
+
+    FILE *resultado = fopen("result.txt", "w");
+
+    if (resultado == NULL){
+        fprintf(stderr, "Não foi possível criar o arquivo result.txt\n");
+        exit(1);
+    }
+    
     numDaLinha = 0;
 
     while (fgets(linha, sizeof(linha), arq) != NULL){
@@ -405,19 +413,20 @@ void processarComandos(){
         int tipoComando = validarLinha(linha, numDaLinha, &cliente, valores);
 
         if (tipoComando == 1){
-            requisicaoDeRecursos(stdout, cliente, valores);
+            requisicaoDeRecursos(resultado, cliente, valores);
         }
 
         else if(tipoComando == 2){
-            liberacaoDeRecursos(stdout, cliente, valores);
+            liberacaoDeRecursos(resultado, cliente, valores);
         }
 
         else if(tipoComando == 3){
-            imprimirEstado(stdout);
+            imprimirEstado(resultado);
         }
     }
 
     fclose(arq);
+    fclose(resultado);
     free(valores);
     
 }
