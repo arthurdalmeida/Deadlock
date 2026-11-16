@@ -236,6 +236,57 @@ int validarLinha(char *linha, int numeroDaLinha, int *cliente, int *pedido){
     return tipoToken;
 }
 
+void processarComandos(){
+    FILE* arq = fopen("commands.txt", "r");
+
+    if (arq == NULL){
+        fprintf(stderr, "Não foi possível abrir o arquivo commands.txt\n");
+        exit(1);
+    }
+
+    int cliente;
+    char linha[256];
+    int numDaLinha = 0;
+    int *valores = malloc(qtdRecursos*sizeof(int));
+
+    while (fgets(linha, sizeof(linha), arq) != NULL){
+        numDaLinha++;
+        validarLinha(linha, numDaLinha, &cliente, valores);
+    }
+
+    rewind(arq);
+    numDaLinha = 0;
+
+    while (fgets(linha, sizeof(linha), arq) != NULL){
+        numDaLinha++;
+        int tipoComando = validarLinha(linha, numDaLinha, &cliente, valores);
+
+        if (tipoComando == 1){
+            printf("RQ %d", cliente);
+            for (int i=0; i<qtdRecursos; i++){
+                printf(" %d", valores[i]);
+            }
+            printf("\n");
+        }
+
+        else if(tipoComando == 2){
+            printf("RL %d", cliente);
+            for (int i=0; i<qtdRecursos; i++){
+                printf(" %d", valores[i]);
+            }
+            printf("\n");
+        }
+
+        else if(tipoComando == 3){
+            imprimirEstado(stdout);
+        }
+    }
+
+    fclose(arq);
+    free(valores);
+    
+}
+
 
 int main(int argc, char *argv[]){
     qtdRecursos = argc-1;
@@ -273,7 +324,7 @@ int main(int argc, char *argv[]){
 
     leituraDeClientes();
     inicializarEstado();
-    imprimirEstado(stdout);
+    processarComandos();
 
     printf("\n");
     free(available);
