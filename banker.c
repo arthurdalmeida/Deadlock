@@ -201,7 +201,7 @@ int validarLinha(char *linha, int numeroDaLinha, int *cliente, int *pedido){
 
     valor = strtol(token, &fim, 10);
     if (*fim != '\0' || fim == token){
-        fprintf(stderr, "O cliente %ld da linha %d é inválido\n", valor, numeroDaLinha);
+        fprintf(stderr, "O cliente %s da linha %d é inválido\n", token, numeroDaLinha);
         exit(1);
     }
 
@@ -234,6 +234,35 @@ int validarLinha(char *linha, int numeroDaLinha, int *cliente, int *pedido){
         exit(1);
     }
     return tipoToken;
+}
+
+void liberacaoDeRecursos(FILE* saida, int cliente, int *valores){
+    int liberador = 1;
+
+    for (int i= 0; i<qtdRecursos; i++){
+        if (valores[i] > allocation[cliente][i]){
+            liberador = 0;
+        }
+    }
+    
+    if (liberador == 1){
+        for (int i=0; i<qtdRecursos; i++){
+            available[i] += valores[i];
+            allocation[cliente][i] -= valores[i];
+            need[cliente][i] += valores[i];
+        }
+
+        fprintf(saida, "Release from customer %d the resources", cliente);
+        for (int i=0; i<qtdRecursos; i++){
+            fprintf(saida, " %d", valores[i]);
+        }
+        fprintf(saida, "\n");
+    }
+
+    else{
+        fprintf(saida, "The customer %d cannot release more resources than it has allocated\n", cliente);
+    }
+    
 }
 
 void processarComandos(){
@@ -270,11 +299,7 @@ void processarComandos(){
         }
 
         else if(tipoComando == 2){
-            printf("RL %d", cliente);
-            for (int i=0; i<qtdRecursos; i++){
-                printf(" %d", valores[i]);
-            }
-            printf("\n");
+            liberacaoDeRecursos(stdout, cliente, valores);
         }
 
         else if(tipoComando == 3){
@@ -326,7 +351,6 @@ int main(int argc, char *argv[]){
     inicializarEstado();
     processarComandos();
 
-    printf("\n");
     free(available);
     return 0;
 }
