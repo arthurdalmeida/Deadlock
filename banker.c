@@ -13,7 +13,7 @@ void leituraDeClientes(){
     FILE *arquivo = fopen("customer.txt", "r");
 
     if (arquivo == NULL){
-        fprintf(stderr, "Não foi possível abrir o arquivo\n");
+        fprintf(stderr, "Nao foi possivel abrir o arquivo customer.txt\n");
         free(available);
         exit(1);
     }
@@ -57,7 +57,7 @@ void leituraDeClientes(){
 
         while (token != NULL){
             if (j >= qtdRecursos){
-                fprintf(stderr, "cloente tem mais recursos que o esperado\n");
+                fprintf(stderr, "Cliente tem mais recursos que o esperado\n");
                 fclose(arquivo);
                 free(available);
                 exit(1);
@@ -67,14 +67,14 @@ void leituraDeClientes(){
             long valor = strtol(token, &fim, 10);
 
             if (fim == token || *fim != '\0'){
-                fprintf(stderr, "cliente tem um valor inválido\n");
+                fprintf(stderr, "Cliente tem um valor invalido\n");
                 fclose(arquivo);
                 free(available);
                 exit(1);
             }
 
             if (valor < 0){
-                fprintf(stderr, "cliente tem um valor neagtivo\n");
+                fprintf(stderr, "Cliente tem um valor negativo\n");
                 fclose(arquivo);
                 free(available);
                 exit(1);
@@ -86,7 +86,7 @@ void leituraDeClientes(){
         } 
 
         if (j != qtdRecursos){
-            fprintf(stderr, "cliente tem menos recursos que o esperado\n");
+            fprintf(stderr, "Cliente tem menos recursos que o esperado\n");
             fclose(arquivo);
             free(available);
             exit(1);
@@ -112,41 +112,50 @@ void inicializarEstado(){
 }
 
 void imprimirEstado(FILE *saida){
-    fprintf(saida, "MAXIMUM | ALLOCATION | NEED\n");
+    fprintf(saida, "MAXIMUM   |   ALLOCATION  |   NEED\n");
 
     for (int i=0; i<qtdClientes; i++){
+        int escritos = 0;
         for (int j=0; j<qtdRecursos; j++){
             if (j>0){
-                fprintf(saida, " ");    
+                escritos += fprintf(saida, " ");    
             }
-            fprintf(saida, "%d", maximum[i][j]);
+            escritos += fprintf(saida, "%d", maximum[i][j]);
         }
 
-        fprintf(saida, " | ");
-
-        for (int j=0; j<qtdRecursos; j++){
-            if (j>0){
-                fprintf(saida, " ");
-            }
-            fprintf(saida, "%d", allocation[i][j]);
+        while (escritos<10){
+            fprintf(saida, " ");
+            escritos++;
         }
 
-        fprintf(saida, " | ");
+        fprintf(saida, "|   ");
 
+        escritos = 0;
         for (int j=0; j<qtdRecursos; j++){
             if (j>0){
-                fprintf(saida, " ");
+                escritos += fprintf(saida, " ");
             }
-            fprintf(saida, "%d", need[i][j]);
+            escritos += fprintf(saida, "%d", allocation[i][j]);
+        }
+
+        while (escritos < 12){
+            fprintf(saida, " ");
+            escritos++;
+        }
+
+        fprintf(saida, "|   ");
+
+        for (int j=0; j<qtdRecursos; j++){
+            fprintf(saida, "%d ", need[i][j]);
         }
 
         fprintf(saida, "\n");
     }
 
-    fprintf(saida, "AVAILABLE");
+    fprintf(saida, "AVAILABLE ");
 
     for (int i=0; i<qtdRecursos; i++){
-        fprintf(saida, " %d", available[i]);
+        fprintf(saida, "%d ", available[i]);
     }
 
     fprintf(saida, "\n");
@@ -170,7 +179,7 @@ int validarLinha(char *linha, int numeroDaLinha, int *cliente, int *pedido){
 
     if (strcmp(token, "*") == 0){
         if (strtok(NULL, " ") != NULL){
-            fprintf(stderr, "commands.txt, linha %d: * nao aceita parametros\n", numeroDaLinha);
+            fprintf(stderr, "O comando * da linha %d nao aceita parametros\n", numeroDaLinha);
             exit(1);
         }
         return 3;
@@ -189,7 +198,7 @@ int validarLinha(char *linha, int numeroDaLinha, int *cliente, int *pedido){
 
     token = strtok(NULL, " ");
     if (token == NULL){
-        fprintf(stderr, "Falta o numero de clientes da linha %d\n", numeroDaLinha);
+        fprintf(stderr, "Falta o numero do cliente da linha %d\n", numeroDaLinha);
         exit(1);
     }
 
@@ -199,9 +208,8 @@ int validarLinha(char *linha, int numeroDaLinha, int *cliente, int *pedido){
         exit(1);
     }
 
-    valor = strtol(token, &fim, 10);
     if (*fim != '\0' || fim == token){
-        fprintf(stderr, "O cliente %s da linha %d é inválido\n", token, numeroDaLinha);
+        fprintf(stderr, "O cliente %s da linha %d e invalido\n", token, numeroDaLinha);
         exit(1);
     }
 
@@ -344,7 +352,7 @@ void requisicaoDeRecursos(FILE* saida, int cliente, int *valores){
         for (int i=0; i<qtdRecursos; i++){
             fprintf(saida, " %d", valores[i]);
         }
-        fprintf(saida, "\n");
+        fprintf(saida, " \n");
     }
 
     else{
@@ -383,7 +391,7 @@ void processarComandos(){
     FILE* arq = fopen("commands.txt", "r");
 
     if (arq == NULL){
-        fprintf(stderr, "Não foi possível abrir o arquivo commands.txt\n");
+        fprintf(stderr, "Nao foi possivel abrir o arquivo commands.txt\n");
         exit(1);
     }
 
@@ -402,10 +410,10 @@ void processarComandos(){
     FILE *resultado = fopen("result.txt", "w");
 
     if (resultado == NULL){
-        fprintf(stderr, "Não foi possível criar o arquivo result.txt\n");
+        fprintf(stderr, "Nao foi possivel criar o arquivo result.txt\n");
         exit(1);
     }
-    
+
     numDaLinha = 0;
 
     while (fgets(linha, sizeof(linha), arq) != NULL){
@@ -436,14 +444,14 @@ int main(int argc, char *argv[]){
     qtdRecursos = argc-1;
 
     if (qtdRecursos <= 0){
-        fprintf(stderr, "deve ser: ./banker r1 r2 r3\n");
+        fprintf(stderr, "Comando deve ser: ./banker r1 r2 r3\n");
         return 1;
     }
 
     available = malloc(qtdRecursos*sizeof(int));
 
     if (available == NULL){
-        fprintf(stderr, "Erro de memória\n");
+        fprintf(stderr, "Erro de memoria\n");
         return 1;
     }
 
@@ -469,6 +477,16 @@ int main(int argc, char *argv[]){
     leituraDeClientes();
     inicializarEstado();
     processarComandos();
+
+    for (int i=0; i<qtdClientes; i++){
+        free(maximum[i]);
+        free(allocation[i]);
+        free(need[i]);
+    }
+
+    free(maximum);
+    free(allocation);
+    free(need);
 
     free(available);
     return 0;
