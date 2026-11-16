@@ -195,7 +195,7 @@ int validarLinha(char *linha, int numeroDaLinha, int *cliente, int *pedido){
 
     valor = strtol(token, &fim, 10);
     if (valor >= qtdClientes || valor < 0){
-        fprintf(stderr, "Cliente %ld da linha %d nao existe\n", valor, numeroDaLinha);
+        fprintf(stderr, "Cliente %s da linha %d nao existe\n", token, numeroDaLinha);
         exit(1);
     }
 
