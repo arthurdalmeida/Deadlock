@@ -265,6 +265,76 @@ void liberacaoDeRecursos(FILE* saida, int cliente, int *valores){
     
 }
 
+int verificarSeguranca(){
+    return 1;
+}
+
+void requisicaoDeRecursos(FILE* saida, int cliente, int *valores){
+    int passaDoMax= 0;
+    int naoESuficiente = 0;
+
+    for (int i=0; i<qtdRecursos; i++){
+        if (valores[i] > need[cliente][i]){
+            passaDoMax = 1;
+        }
+        if (valores[i]> available[i]){
+            naoESuficiente = 1;
+        }
+    }
+
+    if (passaDoMax == 1){
+        fprintf(saida, "The customer %d request", cliente);
+        for (int i=0; i<qtdRecursos; i++){
+            fprintf(saida, " %d", valores[i]);
+        }
+        fprintf(saida, " was denied because exceed its maximum allocation\n");
+    }
+
+    else if (naoESuficiente ==1){
+        fprintf(saida, "The resources");
+        for (int i=0; i<qtdRecursos; i++){
+            fprintf(saida, " %d", available[i]);
+        }
+
+        fprintf(saida, " are not enough to customer %d request", cliente);
+        for (int i=0; i<qtdRecursos; i++){
+            fprintf(saida, " %d", valores[i]);
+        }
+        fprintf(saida, "\n");
+    }
+
+    else{
+        for (int i=0; i<qtdRecursos; i++){
+            available[i] -= valores[i];
+            allocation[cliente][i] += valores[i];
+            need[cliente][i] -= valores[i];
+        }
+
+        if (verificarSeguranca() ==1){
+            fprintf(saida, "Allocate to customer %d the resources", cliente);
+            for (int i=0; i<qtdRecursos; i++){
+                fprintf(saida, " %d", valores[i]);
+            }
+            fprintf(saida, "\n");
+        }
+
+        else{
+            for (int i=0; i<qtdRecursos; i++){
+                available[i] += valores[i];
+                allocation[cliente][i] -= valores[i];
+                need[cliente][i] += valores[i];
+            }
+
+            fprintf(saida, "The customer %d request", cliente);
+            for (int i=0; i<qtdRecursos; i++){
+                fprintf(saida, " %d", valores[i]);
+            }
+            fprintf(saida, " was denied because result in an unsafe state\n");
+        }
+
+    }
+}
+
 void processarComandos(){
     FILE* arq = fopen("commands.txt", "r");
 
@@ -291,11 +361,7 @@ void processarComandos(){
         int tipoComando = validarLinha(linha, numDaLinha, &cliente, valores);
 
         if (tipoComando == 1){
-            printf("RQ %d", cliente);
-            for (int i=0; i<qtdRecursos; i++){
-                printf(" %d", valores[i]);
-            }
-            printf("\n");
+            requisicaoDeRecursos(stdout, cliente, valores);
         }
 
         else if(tipoComando == 2){
