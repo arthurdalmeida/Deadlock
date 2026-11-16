@@ -274,3 +274,63 @@ The customer 2 request 0 1 0 was denied because exceed its maximum allocation
 [?2004lexit
 
 Script done on 2026-11-16 15:56:25-03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-11-16 16:30:40-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="87" LINES="11"]
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ pwd
+[?2004l/mnt/c/Users/almei/Deadlock/Deadlock
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ whoami
+[?2004larthuralmeida
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ date
+[?2004lMon Nov 16 16:30:48 -03 2026
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ gcc -Wall -o banker banker.c [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kc
+[?2004l[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ ./banker 10 5 7
+[?2004lAllocate to customer 0 the resources 0 2 1
+Allocate to customer 2 the resources 3 0 2
+Allocate to customer 1 the resources 2 0 0
+Allocate to customer 4 the resources 0 0 2
+Release from customer 0 the resources 0 1 1
+Allocate to customer 3 the resources 2 1 1
+MAXIMUM | ALLOCATION | NEED
+7 5 3 | 0 1 0 | 7 4 3
+3 2 2 | 2 0 0 | 1 2 2
+9 0 2 | 3 0 2 | 6 0 0
+2 2 2 | 2 1 1 | 0 1 1
+4 3 3 | 0 0 2 | 4 3 1
+AVAILABLE 23 13 19
+Allocate to customer 4 the resources 4 0 0
+Allocate to customer 1 the resources 1 0 2
+Allocate to customer 0 the resources 0 2 0
+The customer 2 request 0 1 0 was denied because exceed its maximum allocation
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ [K]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ [K]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ exit
+[?2004lexit
+
+Script done on 2026-11-16 16:31:30-03:00 [COMMAND_EXIT_CODE="0"]
+Script started on 2026-11-16 16:40:38-03:00 [TERM="xterm-256color" TTY="/dev/pts/0" COLUMNS="87" LINES="11"]
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ pwd
+[?2004l/mnt/c/Users/almei/Deadlock/Deadlock
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ whoami
+[?2004larthuralmeida
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ date
+[?2004lMon Nov 16 16:40:48 -03 2026
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ gcc -Wall -o banker banker.c [A[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[Kc
+[?2004l[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ ./banker 10 5 7
+[?2004lAllocate to customer 0 the resources 0 2 1
+Allocate to customer 2 the resources 3 0 2
+Allocate to customer 1 the resources 2 0 0
+Allocate to customer 4 the resources 0 0 2
+Release from customer 0 the resources 0 1 1
+Allocate to customer 3 the resources 2 1 1
+MAXIMUM | ALLOCATION | NEED
+7 5 3 | 0 1 0 | 7 4 3
+3 2 2 | 2 0 0 | 1 2 2
+9 0 2 | 3 0 2 | 6 0 0
+2 2 2 | 2 1 1 | 0 1 1
+4 3 3 | 0 0 2 | 4 3 1
+AVAILABLE 3 3 2
+The resources 3 3 2 are not enough to customer 4 request 4 0 0
+Allocate to customer 1 the resources 1 0 2
+The customer 0 request 0 2 0 was denied because result in an unsafe state
+The customer 2 request 0 1 0 was denied because exceed its maximum allocation
+[?2004h]0;arthuralmeida@arthur: /mnt/c/Users/almei/Deadlock/Deadlock[01;32marthuralmeida@arthur[00m:[01;34m/mnt/c/Users/almei/Deadlock/Deadlock[00m$ exit
+[?2004lexit
+
+Script done on 2026-11-16 16:41:09-03:00 [COMMAND_EXIT_CODE="0"]

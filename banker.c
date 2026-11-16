@@ -266,7 +266,51 @@ void liberacaoDeRecursos(FILE* saida, int cliente, int *valores){
 }
 
 int verificarSeguranca(){
-    return 1;
+    int *recursosLivres = malloc(qtdRecursos*sizeof(int));
+    int *concluido = calloc(qtdClientes, sizeof(int));
+
+    for (int i=0; i<qtdRecursos; i++){
+        recursosLivres[i] = available[i];
+    }
+    
+    int qtdTerminados = 0;
+    int mudou = 1;
+
+    while (mudou == 1){
+        mudou = 0;
+
+        for (int i=0; i<qtdClientes; i++){
+            if (concluido[i] == 0){
+                int suficiente = 1;
+                
+                for (int j=0; j<qtdRecursos; j++){
+                    if (need[i][j] > recursosLivres[j]){
+                        suficiente = 0;
+                    }
+                }
+
+                if (suficiente == 1){
+                    for (int j=0; j<qtdRecursos; j++){
+                        recursosLivres[j] += allocation[i][j];
+                    }
+
+                    concluido[i] = 1;
+                    qtdTerminados++;
+                    mudou =1;
+                }
+            }
+        }
+    }
+
+    free(recursosLivres);
+    free(concluido);
+    
+    if (qtdTerminados == qtdClientes){
+        return 1;
+    }
+    else{
+        return 0;
+    }
 }
 
 void requisicaoDeRecursos(FILE* saida, int cliente, int *valores){
